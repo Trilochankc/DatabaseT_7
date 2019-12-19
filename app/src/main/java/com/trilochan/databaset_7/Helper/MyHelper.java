@@ -40,9 +40,9 @@ private static final int dbversion = 1;
     }
 
 
-    public  boolean InsertData (String word, String meaning, SQLiteDatabase db) {
+    public  boolean InsertData(String word, String meaning, SQLiteDatabase db) {
         try {
-            String query = "insert into (Word, Meaning) values ('" + word + "', '" + meaning + "')";
+            String query = "insert into tblWord(Word, Meaning) values ('" + word + "','" + meaning + "')";
                     db.execSQL(query);
                     return true;
            }
