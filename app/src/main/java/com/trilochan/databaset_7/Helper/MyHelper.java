@@ -3,6 +3,7 @@ package com.trilochan.databaset_7.Helper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -34,8 +35,22 @@ private static final int dbversion = 1;
 
     }
 
-    public MyHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public MyHelper(@Nullable Context context) {
+        super(context, databaseName, null, dbversion);
     }
 
+
+    public  boolean InsertData (String word, String meaning, SQLiteDatabase db) {
+        try {
+            String query = "insert into (Word, Meaning) values ('" + word + "', '" + meaning + "')";
+                    db.execSQL(query);
+                    return true;
+           }
+        catch (Exception e)
+        {
+            Log.d("Error: ", e.toString());
+            return false;
+        }
+
+}
 }
